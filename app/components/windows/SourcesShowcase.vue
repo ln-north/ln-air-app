@@ -384,8 +384,8 @@
     </add-source-info>
 
     <add-source-info
-      v-if="inspectedSource === widgetTypes.TheJar"
-      @clickAdd="selectWidget(widgetTypes.TheJar)"
+      v-if="inspectedSource === widgetTypes.TipJar"
+      @clickAdd="selectWidget(widgetTypes.TipJar)"
       :name="$t('The Jar')"
       :description="$t('The jar that catches bits, tips, and more.')"
       key="22">
@@ -553,9 +553,9 @@
 
           <div
             class="source source--widget"
-            :class="{'source--active': inspectedSource === widgetTypes.TheJar}"
-            @click="inspectSource(widgetTypes.TheJar)"
-            @dblclick="selectWidget(widgetTypes.TheJar)">
+            :class="{'source--active': inspectedSource === widgetTypes.TipJar}"
+            @click="inspectSource(widgetTypes.TipJar)"
+            @dblclick="selectWidget(widgetTypes.TipJar)">
             <div>{{ $t('The Jar') }}</div><span class="label--essential">{{ $t('Essential') }}</span>
           </div>
 
