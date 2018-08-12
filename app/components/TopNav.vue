@@ -1,49 +1,30 @@
 <template>
 <div class="top-nav">
-  <div class="tabs">
-    <div class="top-nav-item studio-button" :class="{ 'top-nav-item--active': studioModeEnabled }">
-      <a
-        @click="studioMode"
-        class="link">
-        <i class="icon-studio-mode" /><span>{{ $t('common.studioMode') }}</span>
-      </a>
-    </div>
-    <div class="top-nav-item">
-      <a
-        @click="openSettingsWindow"
-        class="link"
-        data-test="OpenSettings">
-        <i class="icon-settings" /><span>{{ $t('common.settings') }}</span>
-      </a>
-    </div>
-    <div class="top-nav-item feedback-button">
-      <a
-        @click="openFeedback"
-        class="link">
-        <i class="icon-feedback" /><span>{{ $t('common.feedback') }}</span>
-      </a>
-    </div>
-    <div class="top-nav-item help-button">
-      <a
-        @click="openHelp"
-        class="link">
-        <i class="icon-help" /><span>{{ $t('common.help') }}</span>
-      </a>
-    </div>
+  <button 
+    @click="studioMode" 
+    class="top-nav-studio-button" 
+    :class="{ 'top-nav-studio-button--active': studioModeEnabled }"
+  >{{ $t('common.studioMode') }}</button>
+  <button
+    v-if="isDevMode"
+    @click="openDevTools"
+    class="top-nav-dev-mode-button">
+    <i class="icon-dev" />
+  </button>
+  <div class="top-nav-login">
+    <login/>
   </div>
-
-  <div class="top-nav-profile">    
-    <div class="top-nav-item" v-if="isDevMode">
-      <a
-        @click="openDevTools"
-        class="link">
-        <i class="icon-dev" />
-      </a>
-    </div>
-    <div class="top-nav-item">
-      <login/>
-    </div>
-  </div>
+  <button 
+    @click="openSettingsWindow" 
+    class="top-nav-open-setting-button" 
+    data-test="OpenSettings"
+  >{{ $t('common.settings') }}</button>
+    <a @click="openFeedback" class="top-nav-feedback-anchor">
+    {{ $t('common.feedback') }}
+  </a>
+  <a @click="openHelp" class="top-nav-help-anchor">
+    {{ $t('common.help') }}
+  </a>
 </div>
 </template>
 
@@ -52,65 +33,69 @@
 <style lang="less" scoped>
 @import "../styles/index";
 
+@bg-color: @dark-theme-bg-medium;
+@base-color: @dark-theme-base-high;
+
 .top-nav {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  flex-flow: row nowrap;
   align-items: center;
-  font-size: 14px;
-  padding: 0 16px;
-  position: relative;
-  flex: 0 0 38px;
-  min-width: 100%;
-  background-color: @padding-color;
-  i {
-    font-size: 14px;
-    margin-right: 4px;
-    &.icon-dev {
-      font-size: 16px;
-    }
-  }
+  height: 32px;
+  width: 100%;
+  background-color: @bg-color;
 }
-.tabs {
-  flex-grow: 1;
-  display: flex;
-  text-align: left;
-  justify-content: flex-start;
+
+.top-nav-studio-button {
+  font-size: 12px;
+  color: @base-color;
+  padding: 2px 10px 0;
+  box-sizing: border-box;
+  height: 32px;
+  margin-right: auto;
+}
+
+.top-nav-dev-mode-button {
+  font-size: 12px;
+  color: @base-color;
+  padding: 0 8px;
+  box-sizing: border-box;
+  height: 32px;
+}
+
+.top-nav-login {
+  font-size: 12px;
+  color: @base-color;
+}
+
+.top-nav-open-setting-button {
+  font-size: 12px;
+  color: @base-color;
+  padding: 2px 8px 0;
+  box-sizing: border-box;
+  height: 32px;
+}
+
+.top-nav-feedback-anchor {
+  display: inline-flex;
   align-items: center;
-
-  .top-nav-item {
-    display: flex;
-    align-items: center;
-    margin-right: 12px;
-
-    &.top-nav-item--active {
-      >a {
-        >i, >span {
-          color: @text-primary;
-        }
-      }
-    }
-  }
+  justify-content: center;
+  font-size: 12px;
+  color: @base-color;
+  padding: 2px 8px 0;
+  box-sizing: border-box;
+  height: 32px;
+  text-decoration: none;
 }
 
-.top-nav-profile {
-  flex-grow: 1;
-  display: flex;
-  text-align: right;
-  justify-content: flex-end;
+.top-nav-help-anchor {
+  display: inline-flex;
   align-items: center;
-  .top-nav-item {
-    margin-left: 8px;
-    display: flex;
-    align-items: center;
-
-  }
+  justify-content: center;
+  font-size: 12px;
+  color: @base-color;
+  padding: 2px 8px 0;
+  box-sizing: border-box;
+  height: 32px;
+  text-decoration: none;
 }
-
-.user__name {
-  &:hover {
-    color: @white;
-  }
-}
-
 </style>

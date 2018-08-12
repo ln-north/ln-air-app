@@ -64,7 +64,8 @@ export class Display {
     });
 
     // 映像部分以外の色
-    nodeObs.OBS_content_setPaddingColor(name, 5, 14, 24);
+    // @dark-theme-bg-medium-low
+    nodeObs.OBS_content_setPaddingColor(name, 23, 23, 23);
 
     // ソースの枠線の色
     nodeObs.OBS_content_setOutlineColor(name, 255, 105, 82);

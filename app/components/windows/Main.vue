@@ -1,9 +1,9 @@
 <template>
 <div class="main" id="mainWrapper" @drop="onDropHandler">
   <title-bar :title="title" />
+  <top-nav v-if="(page !== 'Onboarding')" :locked="applicationLoading"></top-nav>
   <div class="main-contents">
     <div class="main-middle">
-      <top-nav v-if="(page !== 'Onboarding')" :locked="applicationLoading"></top-nav>
       <div v-if="shouldLockContent" class="main-loading">
         <custom-loader></custom-loader>
       </div>

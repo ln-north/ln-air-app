@@ -94,6 +94,8 @@
 }
 
 .titlebar-actions {
+  margin-left: auto;
+  margin-right: 0;
   -webkit-app-region: no-drag;
   height: 32px;
   flex-shrink: 0;
